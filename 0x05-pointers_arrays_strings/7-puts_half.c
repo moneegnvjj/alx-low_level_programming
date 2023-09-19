@@ -4,25 +4,16 @@
 /**
  * puts_half - Prints the second half of a string followed by a newline.
  * @str: The string to print the second half of.
+ * Return: void
  */
 void puts_half(char *str)
 {
-		int len = strlen(str);
-		int start;
+		int i, n, count = 0;
 
-		if (len % 2 == 0)
-		{
-			start = len / 2;
-		}
-		else
-		{
-			start = (len - 1) / 2;
-		}
-
-		for (; start < len; start++)
-		{
-			putchar(str[start]);
-		}
-
+		for (i = 0 ; str[i] != '\0' ; i++)
+			count++;
+		n = (count - 1) / 2;
+		for (i = n + 1 ; str[i] != '\0' ; i++)
+			putchar(str[i]);
 		putchar('\n');
 }
