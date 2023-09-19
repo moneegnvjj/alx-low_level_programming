@@ -3,22 +3,17 @@
 #include <stdlib.h>
 
 /**
- * puts2 - Prints every other character of a string, starting n
+ * puts2 - Prints every other character of a string
  * @str: The string to print.
  */
 void puts2(char *str)
 {
-	int i = 0;
+	int i;
 
-	if (str == NULL)
-		return;
-	while (str[i] != '\0')  
+	for (i = 0 ; str[i] != '\0' ; i++)
 	{
-		i++;
-	}
-	{
-		putchar(str[i]);
-		i += 2;
+		if (i % 2 == 0)
+			putchar(str[i]);
 	}
 	putchar('\n');
 }
