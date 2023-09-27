@@ -1,6 +1,24 @@
 #include <stdio.h>
 
 /**
+ * check_divisibility - Helper function to check divisibility recursively.
+ * @n: The number to check for divisibility.
+ * @divisor: The current divisor to check.
+ *
+ * Return: 1 if n is divisible by divisor, 0 otherwise.
+ */
+int check_divisibility(int n, int divisor)
+{
+	if (divisor == 1)
+		return (1);
+
+	if (n % divisor == 0)
+		return (0);
+
+	return (check_divisibility(n, divisor - 1));
+}
+
+/**
  * is_prime_number - Check if an integer is a prime number.
  * @n: The integer to be checked.
  *
@@ -8,23 +26,14 @@
  */
 int is_prime_number(int n)
 {
-	int i;
+		if (n <= 1)
+			return (0); /* 0 and 1 are not prime numbers*/
 
-		if (n <= 1) /* 0 and 1 are not prime numbers */
-			return (0);
+		if (n == 2)
+			return (1); /* 2 is a prime number*/
 
-		if (n <= 3) /* 2 and 3 are prime numbers */
-			return (1);
+		if (n % 2 == 0)
+			return (0); /* Even numbers (except 2) are not prime*/
 
-		if (n % 2 == 0 || n % 3 == 0) /* numbers and multiples of 3 not prime */
-			return (0);
-
-		/* Check for prime using 6k +/- 1 rule */
-		for (i = 5; i * i <= n; i += 6)
-		{
-		if (n % i == 0 || n % (i + 2) == 0)
-			return (0);
-		}
-
-		return (1); /* If none of the above conditions are met, n is prime */
+		return (check_divisibility(n, n - 1));
 }
