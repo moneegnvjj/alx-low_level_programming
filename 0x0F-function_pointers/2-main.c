@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include "function_pointers.h"
+/* Declare the int_index function prototype here */
+int int_index(int *array, int size, int (*cmp)(int));
 
 /**
  * is_98 - check if a number is equal to 98
